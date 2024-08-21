@@ -8,41 +8,29 @@
     </head>
     <body>
         <div class="w3-container">
-            <h2>Filter List</h2>
-            <p>Search for a name in the input field.</p>
-            <input
-                class="w3-input w3-border w3-padding"
-                type="text"
-                placeholder="Search for names.."
-                id="myInput"
-                onkeyup="myFunction()"
-            >
-            <ul class="w3-ul w3-margin-top" id="myUL">
-                <li>Adele Hà Mạnh Kiên_2121051149</li>
-                <li>Agnes Hà Mạnh Kiên_2121051149</li>
-                <li>Billy Hà Mạnh Kiên_2121051149</li>
-                <li>Bob Hà Mạnh Kiên_2121051149</li>
-                <li>Calvin Hà Mạnh Kiên_2121051149</li>
-                <li>Christina Hà Mạnh Kiên_2121051149</li>
-                <li>Cindy Hà Mạnh Kiên_2121051149</li>
-            </ul>
-        </div>
-        <script>
-        function myFunction() {
-          var input, filter, ul, li, a, i;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          ul = document.getElementById("myUL");
-          li = ul.getElementsByTagName("li");
-          for (i = 0; i < li.length; i++) {
-            txtValue = li[i].textContent || li[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              li[i].style.display = "";
-            } else {
-              li[i].style.display = "none";
-            }
-          }
-        }
-        </script>
-    </body>
-</html>
+            <div class="w3-card w3-section">
+                <header class="w3-container w3-teal">
+                    <h1>Header Hà Mạnh Kiên_2121051149</h1>
+                </header>
+                <div class="w3-container">
+                    <p>
+                        Hà Mạnh Kiên_2121051149
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </div>
+                    <footer class="w3-container w3-teal">
+                        <h5>Footer</h5>
+                    </footer>
+                </div>
+                <div class="w3-card-4 w3-section">
+                    <div class="w3-container w3-teal">
+                        <h2>Mountains Hà Mạnh Kiên_2121051149</h2>
+                    </div>
+                    <img src="img_snowtops.jpg" alt="Alps" style="width:100%">
+                    <div class="w3-container w3-center">
+                        <p>French Alps Hà Mạnh Kiên_2121051149</p>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
