@@ -13,6 +13,7 @@ namespace HMK_PROJECT.Models
         public string DienThoai { get; set; }
         [ForeignKey("MaHTPP")]
         public string? MaHTPP { get; set; }
+        [ForeignKey("MaHTPP")]
         public HeThongPhanPhoi? HTPP { get; set; }
     }
 }
