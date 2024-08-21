@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HMK_PROJECT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+daf6a62e1dcf7ecbf069888d7112703c8ba8598f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04bb3d23d0500e97fff2c679bb42827241a770c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("HMK_PROJECT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HMK_PROJECT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
