@@ -4,9 +4,9 @@ namespace HMK_PROJECT.Controllers
 {
     public class WelcomeController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "Welcome to PTPMQL đây là action Index";
+            return View();
         }
 
         public string HelloWorld()
