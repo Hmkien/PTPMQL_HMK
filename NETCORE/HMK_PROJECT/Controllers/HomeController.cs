@@ -17,6 +17,15 @@ public class HomeController : Controller
     {
         return View();
     }
+    [HttpPost]
+    public IActionResult Index(Person ps)
+    {
+
+        string str = "Xin chào" + ps.PersonId + "có tên là " + ps.FullName + " Sống ở " + ps.Address;
+        ViewData["Input"] = str;
+        return View();
+
+    }
 
     public IActionResult Privacy()
     {

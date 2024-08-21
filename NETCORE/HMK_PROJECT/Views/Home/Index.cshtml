@@ -1,8 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<div class="card w3-padding justify-content-center align-items-center row col-lg-12 mt-5">
+    <form asp-action="index" class="p-4">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <input type="text" name="PersonId" class="form-control mb-3" placeholder="PersonId">
+        <input type="text" name="FullName" class="form-control mb-3" placeholder="Fullname">
+        <input type="text" name="Address" class="form-control mb-3" placeholder="Address">
+        <input type="submit" value="Gửi" class="btn btn-success text-center">
+    </form>
 </div>
+<h1>@ViewBag.Input</h1>
