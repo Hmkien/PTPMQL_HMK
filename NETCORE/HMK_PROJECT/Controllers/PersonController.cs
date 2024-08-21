@@ -10,6 +10,7 @@ using HMK_PROJECT.Models;
 using HMK_PROJECT.Models.Process;
 using Humanizer;
 using OfficeOpenXml;
+using X.PagedList.Extensions;
 
 namespace HMK_PROJECT.Controllers
 {
@@ -24,9 +25,10 @@ namespace HMK_PROJECT.Controllers
         }
 
         // GET: Person
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            return View(await _context.Persons.ToListAsync());
+            var model = _context.Persons.ToList().ToPagedList(page ?? 1, 5);
+            return View(model);
         }
 
         // GET: Person/Details/5

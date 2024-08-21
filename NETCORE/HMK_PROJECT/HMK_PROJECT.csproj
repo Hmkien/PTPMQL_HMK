@@ -20,6 +20,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+    <PackageReference Include="X.pagedList.mvc" Version="8.0.7" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.1.2" />
   </ItemGroup>
 
 </Project>
