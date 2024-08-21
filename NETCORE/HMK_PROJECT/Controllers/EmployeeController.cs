@@ -184,13 +184,13 @@ namespace HMK_PROJECT.Controllers
                     {
                         PersonId = row.Field<string>(0),
                         FullName = row.Field<string>(1),
-                        EmployeeId = row.Field<string>(2),
-                        Address = row.Field<string>(3),
+                        Address = row.Field<string>(2),
+                        EmployeeId = row.Field<string>(3),
                         Age = Convert.ToInt32(row.Field<string>(4)),
 
                     });
                     await _context.Employees.AddRangeAsync(Employees);
-                    await _context.BulkSaveChangesAsync();
+                    await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -198,6 +198,13 @@ namespace HMK_PROJECT.Controllers
             {
                 return BadRequest("Đã xảy ra lỗi" + ex.Message);
             }
+        }
+        public async Task<IActionResult> DeleteAll()
+        {
+            var EmployeeList = await _context.Employees.ToListAsync();
+            _context.RemoveRange(EmployeeList);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

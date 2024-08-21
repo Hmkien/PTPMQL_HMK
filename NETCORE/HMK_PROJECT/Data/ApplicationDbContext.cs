@@ -18,6 +18,8 @@ namespace HMK_PROJECT.Data
             .WithOne(p => p.HTPP)
             .HasForeignKey(c => c.MaHTPP)
             .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Person>().ToTable("Person");
+            modelBuilder.Entity<Employee>().ToTable("Employee");
         }
 
     }

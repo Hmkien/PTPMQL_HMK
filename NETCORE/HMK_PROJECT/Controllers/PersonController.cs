@@ -9,6 +9,7 @@ using HMK_PROJECT.Data;
 using HMK_PROJECT.Models;
 using HMK_PROJECT.Models.Process;
 using Humanizer;
+using OfficeOpenXml;
 
 namespace HMK_PROJECT.Controllers
 {
@@ -193,6 +194,33 @@ namespace HMK_PROJECT.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
+        }
+        public IActionResult Download()
+        {
+            var fileName = "Person" + ".xlsx";
+            using (ExcelPackage excelPackage = new ExcelPackage())
+            {
+                ExcelWorksheet workbook = excelPackage.Workbook.Worksheets.Add("Sheet 1");
+                workbook.Cells["A1"].Value = "PersonId";
+                workbook.Cells["B1"].Value = "Fullname";
+                workbook.Cells["C1"].Value = "Address";
+                var PersonList = _context.Persons.ToList();
+                workbook.Cells["A2"].LoadFromCollection(PersonList);
+                var stream = new MemoryStream(excelPackage.GetAsByteArray());
+                return File(stream, "application/vnd-ms-excel", fileName);
+
+            }
+
+
+        }
+
+        public async Task<IActionResult> DeleteAll()
+        {
+            var EmployeeList = await _context.Persons.ToListAsync();
+            _context.RemoveRange(EmployeeList);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

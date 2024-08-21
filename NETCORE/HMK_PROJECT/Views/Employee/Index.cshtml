@@ -7,7 +7,11 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+<div class="d-flex justify-content-lg-start gap-5">
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+    <a asp-action="DeleteAll" class=" btn btn-danger"> Xóa tất cả</a>
+</div>
+
 </p>
 <table class="table">
     <thead>
@@ -28,26 +32,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmployeeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PersonId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PersonId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PersonId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PersonId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PersonId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
