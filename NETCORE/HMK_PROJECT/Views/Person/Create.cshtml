@@ -5,7 +5,10 @@
 }
 
 <h1>Create</h1>
-
+<form asp-action="Upload" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload" class="btn btn-success">
+</form>
 <h4>Person</h4>
 <hr />
 <div class="row">
@@ -39,5 +42,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

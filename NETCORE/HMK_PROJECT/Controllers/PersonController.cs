@@ -7,12 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HMK_PROJECT.Data;
 using HMK_PROJECT.Models;
+using HMK_PROJECT.Models.Process;
+using Humanizer;
 
 namespace HMK_PROJECT.Controllers
 {
     public class PersonController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private ExcelProcess _excelProcess = new ExcelProcess();
 
         public PersonController(ApplicationDbContext context)
         {
@@ -152,6 +155,44 @@ namespace HMK_PROJECT.Controllers
         private bool PersonExists(string id)
         {
             return _context.Persons.Any(e => e.PersonId == id);
+        }
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            if (file == null)
+            {
+                return BadRequest("File is required");
+
+            }
+            var fileExtention = Path.GetExtension(file.FileName);
+            if (fileExtention.ToLower() != ".xlsx" && fileExtention.ToLower() != ".xls")
+            {
+                return BadRequest("file upload is not match ");
+            }
+            var fileName = file.FileName;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Upload/Excels" + fileName);
+            var fileLocation = new FileInfo(filePath).ToString();
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+                var dt = _excelProcess.ExcelToDataTable(fileLocation);
+                var ExistingPerson = _context.Persons.Select(e => e.PersonId).ToList();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+
+                    var ps = new Person();
+                    ps.PersonId = dt.Rows[i][0].ToString();
+                    ps.FullName = dt.Rows[i][1].ToString();
+                    ps.Address = dt.Rows[i][2].ToString();
+                    if (!ExistingPerson.Contains(ps.PersonId))
+                    {
+                        _context.Persons.Add(ps);
+                    }
+
+                }
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+
+            }
         }
     }
 }
