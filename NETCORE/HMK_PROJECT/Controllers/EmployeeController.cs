@@ -7,12 +7,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HMK_PROJECT.Data;
 using HMK_PROJECT.Models;
+using HMK_PROJECT.Models.Process;
+using System.Data;
+using EFCore.BulkExtensions;
 
 namespace HMK_PROJECT.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private ExcelProcess _excelProcess = new ExcelProcess();
 
         public EmployeeController(ApplicationDbContext context)
         {
@@ -152,6 +156,48 @@ namespace HMK_PROJECT.Controllers
         private bool EmployeeExists(string id)
         {
             return _context.Employees.Any(e => e.PersonId == id);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            if (file == null)
+            {
+                return BadRequest("File is required");
+            }
+            var fileExtension = Path.GetExtension(file.FileName);
+            if (fileExtension.ToLower() != ".xlsx" && fileExtension.ToLower() != ".xls")
+            {
+                return BadRequest("File is not match");
+            }
+            var fileName = file.FileName;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Upload/Excels" + fileName);
+            var fileLocation = new FileInfo(filePath).ToString();
+            try
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                    var dt = _excelProcess.ExcelToDataTable(fileLocation);
+                    var ExistingEmployee = _context.Employees.Select(e => e.PersonId).ToList();
+                    var Employees = dt.AsEnumerable().Where(row => !ExistingEmployee.Contains(row.Field<string>(0)))
+                    .Select(row => new Employee
+                    {
+                        PersonId = row.Field<string>(0),
+                        FullName = row.Field<string>(1),
+                        EmployeeId = row.Field<string>(2),
+                        Address = row.Field<string>(3),
+                        Age = Convert.ToInt32(row.Field<string>(4)),
+
+                    });
+                    await _context.Employees.AddRangeAsync(Employees);
+                    await _context.BulkSaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Đã xảy ra lỗi" + ex.Message);
+            }
         }
     }
 }
