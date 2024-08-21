@@ -7,24 +7,36 @@
         <title>Hà Mạnh Kiên_2121051149</title>
     </head>
     <body>
-        <!-- Sidebar -->
-        <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
-            <h3 class="w3-bar-item">Menu</h3>
-            <a href="#" class="w3-bar-item w3-button">Link 1</a>
-            <a href="#" class="w3-bar-item w3-button">Link 2</a>
-            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+        <div class="w3-container">
+            <h2>Hà Mạnh Kiên_2121051149 Tabs</h2>
+            <p>Hà Mạnh Kiên_2121051149 Tabs are perfect for single page web applications, or for web pages capable of displaying different subjects. Click on the links below.</p>
         </div>
-        <!-- Page Content -->
-        <div style="margin-left:25%">
-            <div class="w3-container w3-teal">
-                <h1>My Page</h1>
-            </div>
-            <img src="img_car.jpg" alt="Car" style="width:100%">
-            <div class="w3-container">
-                <h2>Sidebar Navigation Example >Hà Mạnh Kiên_2121051149</h2>
-                <p>Hà Mạnh Kiên_2121051149 The sidebar with is set with "style="width:25%".</p>
-                <p>Hà Mạnh Kiên_2121051149 The left margin of the page content is set to the same value.</p>
-            </div>
+        <div class="w3-bar w3-black">
+            <button class="w3-bar-item w3-button" onclick="openCity('London')">London</button>
+            <button class="w3-bar-item w3-button" onclick="openCity('Paris')">Paris</button>
+            <button class="w3-bar-item w3-button" onclick="openCity('Tokyo')">Tokyo</button>
         </div>
+        <div id="London" class="w3-container city">
+            <h2>Hà Mạnh Kiên_2121051149 London</h2>
+            <p>Hà Mạnh Kiên_2121051149 London is the capital city of England.</p>
+        </div>
+        <div id="Paris" class="w3-container city" style="display:none">
+            <h2>Hà Mạnh Kiên_2121051149 Paris</h2>
+            <p>Hà Mạnh Kiên_2121051149 Paris is the capital of France.</p>
+        </div>
+        <div id="Tokyo" class="w3-container city" style="display:none">
+            <h2>Hà Mạnh Kiên_2121051149 Tokyo</h2>
+            <p>Hà Mạnh Kiên_2121051149 Tokyo is the capital of Japan.</p>
+        </div>
+        <script>
+        function openCity(cityName) {
+          var i;
+          var x = document.getElementsByClassName("city");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          document.getElementById(cityName).style.display = "block";  
+        }
+        </script>
     </body>
 </html>
