@@ -11,9 +11,11 @@ using HMK_PROJECT.Models.Process;
 using Humanizer;
 using OfficeOpenXml;
 using X.PagedList.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HMK_PROJECT.Controllers
 {
+    [Authorize]
     public class PersonController : Controller
     {
         private readonly ApplicationDbContext _context;
