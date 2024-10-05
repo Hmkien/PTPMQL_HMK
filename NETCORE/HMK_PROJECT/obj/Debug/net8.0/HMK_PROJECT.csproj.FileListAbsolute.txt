@@ -335,3 +335,6 @@ D:\PTPMQL\NETCORE\HMK_PROJECT\bin\Debug\net8.0\Microsoft.Extensions.FileProvider
 D:\PTPMQL\NETCORE\HMK_PROJECT\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 D:\PTPMQL\NETCORE\HMK_PROJECT\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 D:\PTPMQL\NETCORE\HMK_PROJECT\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\PTPMQL\NETCORE\HMK_PROJECT\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+D:\PTPMQL\NETCORE\HMK_PROJECT\bin\Debug\net8.0\MailKit.dll
+D:\PTPMQL\NETCORE\HMK_PROJECT\bin\Debug\net8.0\MimeKit.dll

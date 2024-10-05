@@ -21,7 +21,7 @@ public class HomeController : Controller
     public IActionResult Index(Person ps)
     {
 
-        string str = "Xin chào" + ps.PersonId + "có tên là " + ps.FullName + " Sống ở " + ps.Address;
+        string str = "Xin chào " + ps.PersonId + "có tên là " + ps.FullName + " Sống ở " + ps.Address;
         ViewData["Input"] = str;
         return View();
 

@@ -156,7 +156,6 @@ namespace HMK_PROJECT.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool PersonExists(string id)
         {
             return _context.Persons.Any(e => e.PersonId == id);

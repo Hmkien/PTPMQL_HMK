@@ -6,15 +6,16 @@ namespace HMK_PROJECT.Data;
 
 public class ApplicationDbContext : IdentityDbContext<IdentityApp>
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
+
     }
 
     public DbSet<Person> Persons { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<HeThongPhanPhoi> HTPP { get; set; }
     public DbSet<DaiLy> DaiLy { get; set; }
+    public DbSet<ApplicationRole> ApplicationRole { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

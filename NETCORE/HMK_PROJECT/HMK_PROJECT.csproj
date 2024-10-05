@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="EFCORE.BulkExtensions" Version="8.1.0" />
     <PackageReference Include="EPPLUS" Version="7.3.0" />
+    <PackageReference Include="MailKit" Version="4.7.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
@@ -21,7 +22,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
     <PackageReference Include="X.pagedList.mvc" Version="8.0.7" />
     <PackageReference Include="X.PagedList.Mvc.Core" Version="10.1.2" />
   </ItemGroup>

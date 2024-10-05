@@ -1,0 +1,59 @@
+@model IEnumerable<HMK_PROJECT.Models.IdentityApp>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <th class="text-center"ead>
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.FullName)
+            </th class="text-center">
+
+
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th class="text-center">
+
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.EmailConfirmed)
+            </th class="text-center">
+
+            <th class="text-center"></th class="text-center">
+        </tr>
+    </th class="text-center"ead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td class="text-center"class="text-center">
+                    @{
+if(item.EmailConfirmed ==true){
+    @:<p>1</p>
+}else{
+     @:<p>0</p>
+}
+                    }
+                </td>
+
+                <td class="text-center"class="d-flex justify-content-lg-start gap-3">
+                    <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
